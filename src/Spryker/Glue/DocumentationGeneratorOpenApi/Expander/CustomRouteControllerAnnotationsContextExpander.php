@@ -26,9 +26,6 @@ class CustomRouteControllerAnnotationsContextExpander implements ContextExpander
      */
     protected $annotationAnalyzer;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\AnnotationAnalyzerInterface $annotationAnalyzer
-     */
     public function __construct(AnnotationAnalyzerInterface $annotationAnalyzer)
     {
         $this->annotationAnalyzer = $annotationAnalyzer;
@@ -72,11 +69,6 @@ class CustomRouteControllerAnnotationsContextExpander implements ContextExpander
         return $this->filterByPathAnnotation($apiApplicationSchemaContextTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer
-     */
     protected function filterByPathAnnotation(ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer): ApiApplicationSchemaContextTransfer
     {
         $filteredResourceContextsData = array_filter(

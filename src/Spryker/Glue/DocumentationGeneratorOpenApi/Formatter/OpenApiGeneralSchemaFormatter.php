@@ -147,9 +147,6 @@ class OpenApiGeneralSchemaFormatter implements OpenApiSchemaFormatterInterface
      */
     protected $documentationGeneratorApiConfig;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\DocumentationGeneratorOpenApiConfig $documentationGeneratorApiConfig
-     */
     public function __construct(DocumentationGeneratorOpenApiConfig $documentationGeneratorApiConfig)
     {
         $this->documentationGeneratorApiConfig = $documentationGeneratorApiConfig;
@@ -192,9 +189,6 @@ class OpenApiGeneralSchemaFormatter implements OpenApiSchemaFormatterInterface
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getHttpSchemaType(): string
     {
         if (extension_loaded('openssl')) {

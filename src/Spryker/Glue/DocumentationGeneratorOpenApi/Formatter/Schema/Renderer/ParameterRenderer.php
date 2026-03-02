@@ -18,9 +18,6 @@ class ParameterRenderer implements ParameterRendererInterface
      */
     protected $parameterSpecificationComponent;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\ParameterSpecificationComponentInterface $parameterSpecificationComponent
-     */
     public function __construct(ParameterSpecificationComponentInterface $parameterSpecificationComponent)
     {
         $this->parameterSpecificationComponent = $parameterSpecificationComponent;

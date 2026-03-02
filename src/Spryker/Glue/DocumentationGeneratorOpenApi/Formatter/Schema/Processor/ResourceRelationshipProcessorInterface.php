@@ -35,12 +35,6 @@ interface ResourceRelationshipProcessorInterface
         array $relationshipResponses
     ): SchemaDataTransfer;
 
-    /**
-     * @param string $transferClassName
-     * @param string $responseSchemaName
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function getIncludeBaseSchema(
         string $transferClassName,
         string $responseSchemaName

@@ -23,10 +23,6 @@ class ResourceRelationshipProcessor implements ResourceRelationshipProcessorInte
      */
     protected $schemaBuilder;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\ResourceTransferAnalyzerInterface $resourceTransferAnalyzer
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Builder\SchemaBuilderInterface $schemaBuilder
-     */
     public function __construct(
         ResourceTransferAnalyzerInterface $resourceTransferAnalyzer,
         SchemaBuilderInterface $schemaBuilder
@@ -76,12 +72,6 @@ class ResourceRelationshipProcessor implements ResourceRelationshipProcessorInte
         return $this->schemaBuilder->createIncludedDataSchema($includedSchemaName, $relationshipResponses);
     }
 
-    /**
-     * @param string $transferClassName
-     * @param string $responseSchemaName
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function getIncludeBaseSchema(
         string $transferClassName,
         string $responseSchemaName

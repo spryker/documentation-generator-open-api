@@ -135,13 +135,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
      */
     protected $pathParameterSpecificationComponent;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\ResourceTransferAnalyzerInterface $resourceTransferAnalyzer
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\External\DocumentationGeneratorOpenApiToInflectorInterface $inflector
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathResponseSpecificationComponentInterface $pathResponseSpecificationComponent
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathRequestSpecificationComponentInterface $pathRequestSpecificationComponent
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathParameterSpecificationComponentInterface $pathParameterSpecificationComponent
-     */
     public function __construct(
         ResourceTransferAnalyzerInterface $resourceTransferAnalyzer,
         DocumentationGeneratorOpenApiToInflectorInterface $inflector,
@@ -214,12 +207,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return $pathMethodData;
     }
 
-    /**
-     * @param string $pattern
-     * @param string $resourceType
-     *
-     * @return string
-     */
     public function getDefaultMethodSummary(string $pattern, string $resourceType): string
     {
         return sprintf($pattern, str_replace('-', ' ', $resourceType));
@@ -254,11 +241,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return $formattedData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceContextTransfer $resourceContextTransfer
-     *
-     * @return string
-     */
     public function getPathFromResourceType(ResourceContextTransfer $resourceContextTransfer): string
     {
         $path = $this->getPathFromParentResourceType('', $resourceContextTransfer->getParentResources());
@@ -284,11 +266,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return $this->getPathFromParentResourceType($path, $parentResources[static::KEY_PARENT]);
     }
 
-    /**
-     * @param string $resourceType
-     *
-     * @return string
-     */
     protected function buildPathByResourceType(string $resourceType): string
     {
         $resourceTypeExploded = explode('-', $resourceType);
@@ -301,11 +278,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return sprintf('/%s/%s', $resourceType, $resourceId);
     }
 
-    /**
-     * @param string $requestAttributesTransferName
-     *
-     * @return string
-     */
     protected function getRequestName(string $requestAttributesTransferName): string
     {
         $requestSchemaName = $this->resourceTransferAnalyzer->createRequestSchemaNameFromTransferClassName($requestAttributesTransferName);
@@ -313,11 +285,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return sprintf(static::PATTERN_SCHEMA_REFERENCE, $requestSchemaName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     *
-     * @return string
-     */
     protected function getResponseName(AnnotationTransfer $annotationTransfer): string
     {
         $requestSchemaName = $this->resourceTransferAnalyzer->createResponseResourceSchemaNameFromTransferClassName($annotationTransfer->getResponseAttributesClassNameOrFail());
@@ -326,11 +293,6 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return $requestSchemaName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     *
-     * @return string
-     */
     protected function getResponseCollectionName(AnnotationTransfer $annotationTransfer): string
     {
         $requestSchemaName = $this->resourceTransferAnalyzer->createResponseCollectionSchemaNameFromTransferClassName($annotationTransfer->getResponseAttributesClassNameOrFail());
@@ -339,21 +301,11 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         return $requestSchemaName;
     }
 
-    /**
-     * @param string $operationId
-     *
-     * @return bool
-     */
     protected function isGetMethod(string $operationId): bool
     {
         return stripos($operationId, static::METHOD_GET) === 0;
     }
 
-    /**
-     * @param string $operationId
-     *
-     * @return bool
-     */
     protected function isDeleteMethod(string $operationId): bool
     {
         return stripos($operationId, static::METHOD_DELETE) === 0;

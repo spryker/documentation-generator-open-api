@@ -172,11 +172,6 @@ class PathParameterSpecificationComponent implements PathParameterSpecificationC
         return $matches[0] ?? [];
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return string
-     */
     protected function getPathParameterDescription(string $parameter): string
     {
         $pieces = preg_split(static::PATTERN_REGEX_WORD_SLICE, $parameter);

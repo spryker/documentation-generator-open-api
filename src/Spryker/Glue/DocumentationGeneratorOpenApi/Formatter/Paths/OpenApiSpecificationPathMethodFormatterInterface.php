@@ -19,12 +19,6 @@ interface OpenApiSpecificationPathMethodFormatterInterface
      */
     public function getPathMethodComponentData(PathMethodComponentDataTransfer $pathMethodComponentDataTransfer): array;
 
-    /**
-     * @param string $pattern
-     * @param string $resourceType
-     *
-     * @return string
-     */
     public function getDefaultMethodSummary(string $pattern, string $resourceType): string;
 
     /**
@@ -37,10 +31,5 @@ interface OpenApiSpecificationPathMethodFormatterInterface
      */
     public function addPath(array $pathMethodData, string $pathName, string $methodName, array $formattedData): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ResourceContextTransfer $resourceContextTransfer
-     *
-     * @return string
-     */
     public function getPathFromResourceType(ResourceContextTransfer $resourceContextTransfer): string;
 }

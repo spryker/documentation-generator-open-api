@@ -34,11 +34,6 @@ class SchemaRenderer implements SchemaRendererInterface
      */
     protected $schemaItemsSpecificationComponent;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaSpecificationComponentInterface $schemaSpecificationComponent
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaPropertySpecificationComponentInterface $schemaPropertySpecificationComponent
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaItemsSpecificationComponentInterface $schemaItemsSpecificationComponent
-     */
     public function __construct(
         SchemaSpecificationComponentInterface $schemaSpecificationComponent,
         SchemaPropertySpecificationComponentInterface $schemaPropertySpecificationComponent,
@@ -75,12 +70,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $this->schemaSpecificationComponent->getSpecificationComponentData($schemaComponentTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaComponentTransfer $schemaComponent
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return void
-     */
     protected function addSchemaProperty(SchemaComponentTransfer $schemaComponent, SchemaPropertyTransfer $property): void
     {
         $schemaPropertyComponentTransfer = new SchemaPropertyComponentTransfer();
@@ -100,12 +89,6 @@ class SchemaRenderer implements SchemaRendererInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return \Generated\Shared\Transfer\SchemaPropertyComponentTransfer
-     */
     protected function addOneOf(
         SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer,
         SchemaPropertyTransfer $property
@@ -117,12 +100,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return \Generated\Shared\Transfer\SchemaPropertyComponentTransfer
-     */
     protected function addType(
         SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer,
         SchemaPropertyTransfer $property
@@ -134,12 +111,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return \Generated\Shared\Transfer\SchemaPropertyComponentTransfer
-     */
     protected function addReference(
         SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer,
         SchemaPropertyTransfer $property
@@ -151,12 +122,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return \Generated\Shared\Transfer\SchemaPropertyComponentTransfer
-     */
     protected function addItemsType(
         SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer,
         SchemaPropertyTransfer $property
@@ -168,12 +133,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer
-     * @param \Generated\Shared\Transfer\SchemaPropertyTransfer $property
-     *
-     * @return \Generated\Shared\Transfer\SchemaPropertyComponentTransfer
-     */
     protected function addItemsReference(
         SchemaPropertyComponentTransfer $schemaPropertyComponentTransfer,
         SchemaPropertyTransfer $property
@@ -185,12 +144,6 @@ class SchemaRenderer implements SchemaRendererInterface
         return $schemaPropertyComponentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaComponentTransfer $schemaComponent
-     * @param \Generated\Shared\Transfer\SchemaItemsTransfer $items
-     *
-     * @return void
-     */
     protected function addRelationshipSchemaItems(SchemaComponentTransfer $schemaComponent, SchemaItemsTransfer $items): void
     {
         $schemaPropertyComponentTransfer = new SchemaItemsComponentTransfer();

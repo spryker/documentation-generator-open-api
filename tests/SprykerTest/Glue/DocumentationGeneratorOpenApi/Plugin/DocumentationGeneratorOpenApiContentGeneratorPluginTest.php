@@ -33,9 +33,6 @@ class DocumentationGeneratorOpenApiContentGeneratorPluginTest extends Unit
      */
     protected const TMP_FILE_NAME = 'generated.yaml.example';
 
-    /**
-     * @return void
-     */
     public function testCallGenerateContentIsValid(): void
     {
         //Arrange
@@ -67,9 +64,6 @@ class DocumentationGeneratorOpenApiContentGeneratorPluginTest extends Unit
         $this->assertEquals(file_get_contents($exampleFilePath), $content);
     }
 
-    /**
-     * @return void
-     */
     public function testCallGenerateLogicException(): void
     {
         //Arrange

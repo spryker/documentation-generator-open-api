@@ -71,9 +71,6 @@ use Spryker\Glue\Kernel\AbstractFactory;
  */
 class DocumentationGeneratorOpenApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createSchemaFormatterCollection(): OpenApiSchemaFormatterInterface
     {
         return new OpenApiSchemaFormatterCollection(
@@ -88,9 +85,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSpecificationPathFormatter
-     */
     public function createOpenApiSpecificationPathFormatter(): OpenApiSpecificationPathFormatter
     {
         return new OpenApiSpecificationPathFormatter(
@@ -132,17 +126,11 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         return $this->getProvidedDependency(DocumentationGeneratorOpenApiDependencyProvider::PLUGINS_OPEN_API_SCHEMA_FORMATTER);
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Generator\DocumentationContentGeneratorInterface
-     */
     public function createDocumentationContentGenerator(): DocumentationContentGeneratorInterface
     {
         return new DocumentationGeneratorOpenApiToOpenApiAdapter();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createOpenApiGeneralSchemaFormatter(): FormatterOpenApiGeneralSchemaFormatterInterface
     {
         return new OpenApiGeneralSchemaFormatter(
@@ -150,17 +138,11 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createOpenApiSecuritySchemesFormatter(): OpenApiSchemaFormatterInterface
     {
         return new OpenApiSecuritySchemesFormatter();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createOpenApiSchemasFormatter(): OpenApiSchemaFormatterInterface
     {
         return new OpenApiSchemasFormatter(
@@ -171,9 +153,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createOpenApiParametersFormatter(): OpenApiSchemaFormatterInterface
     {
         return new OpenApiParametersFormatter(
@@ -181,9 +160,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\ParameterRendererInterface
-     */
     public function createParameterRenderer(): ParameterRendererInterface
     {
         return new ParameterRenderer(
@@ -191,17 +167,11 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\ParameterSpecificationComponentInterface
-     */
     public function createParameterSpecificationComponent(): ParameterSpecificationComponentInterface
     {
         return new ParameterSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Processor\ResourceRelationshipProcessorInterface
-     */
     public function createResourceRelationshipProcessor(): ResourceRelationshipProcessorInterface
     {
         return new ResourceRelationshipProcessor(
@@ -210,17 +180,11 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Builder\SchemaBuilderInterface
-     */
     public function createOpenApiSpecificationSchemaBuilder(): SchemaBuilderInterface
     {
         return new OpenApiSpecificationSchemaBuilder($this->createOpenApiSpecificationSchemaComponentBuilder());
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Builder\SchemaComponentBuilderInterface
-     */
     public function createOpenApiSpecificationSchemaComponentBuilder(): SchemaComponentBuilderInterface
     {
         return new OpenApiSpecificationSchemaComponentBuilder(
@@ -228,9 +192,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\SchemaRendererInterface
-     */
     public function createSchemaRenderer(): SchemaRendererInterface
     {
         return new SchemaRenderer(
@@ -240,41 +201,26 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaPropertySpecificationComponentInterface
-     */
     public function createSchemaPropertySpecificationComponent(): SchemaPropertySpecificationComponentInterface
     {
         return new SchemaPropertySpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaItemsSpecificationComponentInterface
-     */
     public function createSchemaItemsSpecificationComponent(): SchemaItemsSpecificationComponentInterface
     {
         return new SchemaItemsSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\Component\SchemaSpecificationComponentInterface
-     */
     public function createSchemaSpecificationComponent(): SchemaSpecificationComponentInterface
     {
         return new SchemaSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\OpenApiSchemaFormatterInterface
-     */
     public function createOpenApiTagGenerator(): OpenApiSchemaFormatterInterface
     {
         return new OpenApiTagGenerator();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Paths\OpenApiSpecificationPathMethodFormatterInterface
-     */
     public function createOpenApiPathMethodFormatter(): OpenApiSpecificationPathMethodFormatterInterface
     {
         return new OpenApiSpecificationPathMethodFormatter(
@@ -286,9 +232,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\PathMethodFormatterInterface
-     */
     public function createPostResourcePathMethodFormatter(): PathMethodFormatterInterface
     {
         return new PostResourcePathMethodFormatter(
@@ -296,9 +239,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\CustomRoutePathMethodFormatter
-     */
     public function createCustomRoutesPathMethodFormatter(): CustomRoutePathMethodFormatter
     {
         return new CustomRoutePathMethodFormatter(
@@ -306,9 +246,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\PathMethodFormatterInterface
-     */
     public function createGetResourceByIdPathMethodFormatter(): PathMethodFormatterInterface
     {
         return new GetResourceByIdPathMethodFormatter(
@@ -316,9 +253,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\PathMethodFormatterInterface
-     */
     public function createGetCollectionResourcePathMethodFormatter(): PathMethodFormatterInterface
     {
         return new GetCollectionResourcePathMethodFormatter(
@@ -326,9 +260,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\PathMethodFormatterInterface
-     */
     public function createPatchResourcePathMethodFormatter(): PathMethodFormatterInterface
     {
         return new PatchResourcePathMethodFormatter(
@@ -336,9 +267,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Processor\PathMethodFormatterInterface
-     */
     public function createDeleteResourcePathMethodFormatter(): PathMethodFormatterInterface
     {
         return new DeleteResourcePathMethodFormatter(
@@ -346,41 +274,26 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathRequestSpecificationComponentInterface
-     */
     public function createPathRequestSpecificationComponent(): PathRequestSpecificationComponentInterface
     {
         return new PathRequestSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathParameterSpecificationComponentInterface
-     */
     public function createPathParameterSpecificationComponent(): PathParameterSpecificationComponentInterface
     {
         return new PathParameterSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Component\PathResponseSpecificationComponentInterface
-     */
     public function createPathResponseSpecificationComponent(): PathResponseSpecificationComponentInterface
     {
         return new PathResponseSpecificationComponent();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\ResourceTransferAnalyzerInterface
-     */
     public function createResourceTransferAnalyzer(): ResourceTransferAnalyzerInterface
     {
         return new ResourceTransferAnalyzer();
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\AnnotationAnalyzerInterface
-     */
     public function createAnnotationAnalyzer(): AnnotationAnalyzerInterface
     {
         return new AnnotationAnalyzer(
@@ -389,9 +302,6 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Finder\FinderInterface
-     */
     public function createGlueFileFinder(): FinderInterface
     {
         return new GlueFileFinder(
@@ -400,49 +310,31 @@ class DocumentationGeneratorOpenApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\External\DocumentationGeneratorOpenApiToFinderInterface
-     */
     public function getFinder(): DocumentationGeneratorOpenApiToFinderInterface
     {
         return $this->getProvidedDependency(DocumentationGeneratorOpenApiDependencyProvider::FINDER);
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\Service\DocumentationGeneratorOpenApiToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): DocumentationGeneratorOpenApiToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(DocumentationGeneratorOpenApiDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Expander\ContextExpanderInterface
-     */
     public function createControllerAnnotationsContextExpander(): ContextExpanderInterface
     {
         return new ControllerAnnotationsContextExpander($this->createAnnotationAnalyzer());
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Expander\ContextExpanderInterface
-     */
     public function createRelationshipPluginAnnotationsContextExpander(): ContextExpanderInterface
     {
         return new RelationshipPluginAnnotationsContextExpander($this->createAnnotationAnalyzer());
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\External\DocumentationGeneratorOpenApiToInflectorInterface
-     */
     public function getInflector(): DocumentationGeneratorOpenApiToInflectorInterface
     {
         return $this->getProvidedDependency(DocumentationGeneratorOpenApiDependencyProvider::INFLECTOR);
     }
 
-    /**
-     * @return \Spryker\Glue\DocumentationGeneratorOpenApi\Expander\ContextExpanderInterface
-     */
     public function createCustomRouteControllerAnnotationsContextExpander(): ContextExpanderInterface
     {
         return new CustomRouteControllerAnnotationsContextExpander($this->createAnnotationAnalyzer());

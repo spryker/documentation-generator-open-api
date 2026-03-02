@@ -44,11 +44,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
      */
     public const PLUGINS_OPEN_API_SCHEMA_FORMATTER = 'PLUGINS_OPEN_API_SCHEMA_FORMATTER';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = $this->addInflector($container);
@@ -60,11 +55,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addInflector(Container $container): Container
     {
         $container->set(static::INFLECTOR, function () {
@@ -74,11 +64,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addOpenApiWriter(Container $container): Container
     {
         $container->set(static::OPEN_API_WRITER, function () {
@@ -88,11 +73,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addFinder(Container $container): Container
     {
         $container->set(static::FINDER, function () {
@@ -102,11 +82,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -118,11 +93,6 @@ class DocumentationGeneratorOpenApiDependencyProvider extends AbstractBundleDepe
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addOpenApiSchemaFormatterPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_OPEN_API_SCHEMA_FORMATTER, function () {

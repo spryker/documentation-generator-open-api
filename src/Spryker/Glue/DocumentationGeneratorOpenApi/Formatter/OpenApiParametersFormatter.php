@@ -44,9 +44,6 @@ class OpenApiParametersFormatter implements OpenApiSchemaFormatterInterface
      */
     protected $parameterSchemeRenderer;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\ParameterRendererInterface $parameterSchemeRenderer
-     */
     public function __construct(ParameterRendererInterface $parameterSchemeRenderer)
     {
         $this->parameterSchemeRenderer = $parameterSchemeRenderer;
@@ -74,9 +71,6 @@ class OpenApiParametersFormatter implements OpenApiSchemaFormatterInterface
          return $formattedData;
     }
 
-    /**
-     * @return void
-     */
     protected function addAcceptLanguageParameter(): void
     {
         $languageParameter = (new ParameterTransfer())
@@ -102,11 +96,6 @@ class OpenApiParametersFormatter implements OpenApiSchemaFormatterInterface
         return $this->parameters;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ParameterTransfer $parameterTransfer
-     *
-     * @return void
-     */
     protected function addParameter(ParameterTransfer $parameterTransfer): void
     {
         $this->parameters = array_replace_recursive($this->parameters, $this->parameterSchemeRenderer->render($parameterTransfer));

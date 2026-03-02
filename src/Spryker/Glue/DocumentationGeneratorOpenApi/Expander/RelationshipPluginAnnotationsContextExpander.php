@@ -18,19 +18,11 @@ class RelationshipPluginAnnotationsContextExpander implements ContextExpanderInt
      */
     protected $annotationAnalyzer;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\AnnotationAnalyzerInterface $annotationAnalyzer
-     */
     public function __construct(AnnotationAnalyzerInterface $annotationAnalyzer)
     {
         $this->annotationAnalyzer = $annotationAnalyzer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer
-     */
     public function expand(ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer): ApiApplicationSchemaContextTransfer
     {
         foreach ($apiApplicationSchemaContextTransfer->getRelationshipPluginsContexts()->getArrayCopy() as $relationshipPluginsContextTransfer) {

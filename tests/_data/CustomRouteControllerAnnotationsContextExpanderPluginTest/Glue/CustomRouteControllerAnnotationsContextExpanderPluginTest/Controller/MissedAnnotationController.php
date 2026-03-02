@@ -3,9 +3,6 @@
 
 class MissedAnnotationController
 {
-    /**
-     * @return void
-     */
     public function getCollectionAction(): void
     {
     }

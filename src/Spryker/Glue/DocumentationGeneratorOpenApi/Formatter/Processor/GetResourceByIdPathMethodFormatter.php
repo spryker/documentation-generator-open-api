@@ -30,9 +30,6 @@ class GetResourceByIdPathMethodFormatter implements PathMethodFormatterInterface
      */
     protected $openApiSpecificationPathMethodFormatter;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Paths\OpenApiSpecificationPathMethodFormatterInterface $openApiSpecificationPathMethodFormatter
-     */
     public function __construct(OpenApiSpecificationPathMethodFormatterInterface $openApiSpecificationPathMethodFormatter)
     {
         $this->openApiSpecificationPathMethodFormatter = $openApiSpecificationPathMethodFormatter;

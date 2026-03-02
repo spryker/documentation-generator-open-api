@@ -41,9 +41,6 @@ class SchemaPropertySpecificationComponentTest extends Unit
      */
     protected const VALUE_TYPE_ARRAY = 'array';
 
-    /**
-     * @return void
-     */
     public function testGetSpecificationComponentDataSetsKeyItemsAsEmptyArray(): void
     {
         //Arrange

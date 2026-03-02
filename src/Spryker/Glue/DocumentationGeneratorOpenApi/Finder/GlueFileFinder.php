@@ -27,10 +27,6 @@ class GlueFileFinder implements FinderInterface
      */
     protected $documentationGeneratorOpenApiConfig;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\External\DocumentationGeneratorOpenApiToFinderInterface $finder
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\DocumentationGeneratorOpenApiConfig $documentationGeneratorOpenApiConfig
-     */
     public function __construct(
         DocumentationGeneratorOpenApiToFinderInterface $finder,
         DocumentationGeneratorOpenApiConfig $documentationGeneratorOpenApiConfig

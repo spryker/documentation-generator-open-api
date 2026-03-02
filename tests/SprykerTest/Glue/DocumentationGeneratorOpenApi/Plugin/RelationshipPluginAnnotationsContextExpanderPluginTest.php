@@ -29,9 +29,6 @@ class RelationshipPluginAnnotationsContextExpanderPluginTest extends Unit
   */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -41,9 +38,6 @@ class RelationshipPluginAnnotationsContextExpanderPluginTest extends Unit
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandTransferByResourceRelationshipPlugin(): void
     {
         //Arrange

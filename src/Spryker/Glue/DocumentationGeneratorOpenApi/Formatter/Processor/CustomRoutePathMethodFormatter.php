@@ -66,9 +66,6 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
      */
     protected $openApiSpecificationPathMethodFormatter;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Paths\OpenApiSpecificationPathMethodFormatterInterface $openApiSpecificationPathMethodFormatter
-     */
     public function __construct(OpenApiSpecificationPathMethodFormatterInterface $openApiSpecificationPathMethodFormatter)
     {
         $this->openApiSpecificationPathMethodFormatter = $openApiSpecificationPathMethodFormatter;
@@ -124,11 +121,6 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
         return $pathMethodData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomRoutesContextTransfer $customRouteTransfer
-     *
-     * @return string
-     */
     protected function getResourceType(CustomRoutesContextTransfer $customRouteTransfer): string
     {
         $defaultsData = $customRouteTransfer->getDefaults();
@@ -142,11 +134,6 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
         return $segments[0];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomRoutesContextTransfer $customRouteTransfer
-     *
-     * @return string
-     */
     protected function getRequestMethodFromAnnotation(CustomRoutesContextTransfer $customRouteTransfer): string
     {
         $defaultsData = $customRouteTransfer->getDefaults();
@@ -155,11 +142,6 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
         return ($method === static::METHOD_GET_COLLECTION) ? static::REQUEST_METHOD_GET_COLLECTION : strtolower($method);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomRoutesContextTransfer $customRouteTransfer
-     *
-     * @return \Generated\Shared\Transfer\AnnotationTransfer
-     */
     protected function getAnnotationTransfer(CustomRoutesContextTransfer $customRouteTransfer): AnnotationTransfer
     {
         $defaultsData = $customRouteTransfer->getDefaults();

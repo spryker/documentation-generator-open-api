@@ -30,9 +30,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -42,9 +39,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function testCallExpandAndAssertTransferForGetAction(): void
     {
         //Arrange
@@ -73,9 +67,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertEquals('Description.', $customRoutesContextTransfer->getPathAnnotation()->getGetResourceById()->getParameters()[1]->getDescription());
     }
 
-    /**
-     * @return void
-     */
     public function testCallExpandAndAssertTransferForPostAction(): void
     {
         //Arrange
@@ -104,9 +95,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertEquals('Description.', $customRoutesContextTransfer->getPathAnnotation()->getPost()->getParameters()[1]->getDescription());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandForPatchAction(): void
     {
         //Arrange
@@ -135,9 +123,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertEquals('Description.', $customRoutesContextTransfer->getPathAnnotation()->getPatch()->getParameters()[1]->getDescription());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandForDeleteAction(): void
     {
         //Arrange
@@ -166,9 +151,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertEquals('Description.', $customRoutesContextTransfer->getPathAnnotation()->getDelete()->getParameters()[1]->getDescription());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandNotSetControllerInvalidCustomRouteException(): void
     {
         //Arrange
@@ -191,9 +173,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $plugin->expand($apiApplicationSchemaContextTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandAndControllerNotFoundAction(): void
     {
         //Arrange
@@ -214,9 +193,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertEmpty($apiApplicationSchemaContextTransfer->getCustomRoutesContexts()[0]->getPathAnnotation());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandControllerActionWithoutAnnotation(): void
     {
         //Arrange
@@ -236,13 +212,6 @@ class CustomRouteControllerAnnotationsContextExpanderPluginTest extends Unit
         $this->assertNull($apiApplicationSchemaContextTransfer->getCustomRoutesContexts()->offsetGet(0)->getPathAnnotation());
     }
 
-    /**
-     * @param string $controller
-     * @param string $action
-     * @param string $method
-     *
-     * @return \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer
-     */
     protected function createApiApplicationSchemaContextTransfer(string $controller, string $action, string $method): ApiApplicationSchemaContextTransfer
     {
         return (new ApiApplicationSchemaContextTransfer())

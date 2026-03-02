@@ -106,20 +106,11 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
      */
     protected $schemaComponentBuilder;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Builder\SchemaComponentBuilderInterface $schemaComponentBuilder
-     */
     public function __construct(SchemaComponentBuilderInterface $schemaComponentBuilder)
     {
         $this->schemaComponentBuilder = $schemaComponentBuilder;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createRequestBaseSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -128,12 +119,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createRequestDataSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -169,12 +154,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createResponseBaseSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -184,13 +163,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     * @param bool $isIdNullable
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createResponseDataSchema(string $schemaName, string $ref, bool $isIdNullable = false): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -225,12 +197,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createCollectionResponseBaseSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -239,12 +205,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createRelationshipBaseSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -253,12 +213,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $schemaData;
     }
 
-    /**
-     * @param string $schemaName
-     * @param string $ref
-     *
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createIncludedBaseSchema(string $schemaName, string $ref): SchemaDataTransfer
     {
         $schemaData = $this->schemaComponentBuilder->createSchemaDataTransfer($schemaName);
@@ -297,9 +251,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
             ->setItems($this->schemaComponentBuilder->createRelationshipSchemaItemsTransfer($relationshipResponses));
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createDefaultRelationshipDataAttributesSchema(): SchemaDataTransfer
     {
         $relationshipsSchema = $this->schemaComponentBuilder->createSchemaDataTransfer(static::SCHEMA_NAME_RELATIONSHIPS);
@@ -309,9 +260,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $relationshipsSchema;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createDefaultRelationshipDataCollectionAttributesSchema(): SchemaDataTransfer
     {
         $relationshipDataSchema = $this->schemaComponentBuilder->createSchemaDataTransfer(static::SCHEMA_NAME_RELATIONSHIPS_DATA);
@@ -320,9 +268,6 @@ class OpenApiSpecificationSchemaBuilder implements SchemaBuilderInterface
         return $relationshipDataSchema;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SchemaDataTransfer
-     */
     public function createDefaultLinksSchema(): SchemaDataTransfer
     {
         $linksSchema = $this->schemaComponentBuilder->createSchemaDataTransfer(static::SCHEMA_NAME_LINKS);

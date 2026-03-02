@@ -31,9 +31,6 @@ class ControllerAnnotationsContextExpanderPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class ControllerAnnotationsContextExpanderPluginTest extends Unit
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function testCallExpandAndAssertTransferData(): void
     {
         //Arrange

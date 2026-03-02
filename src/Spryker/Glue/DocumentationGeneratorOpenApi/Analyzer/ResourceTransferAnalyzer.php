@@ -68,11 +68,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
      */
     protected const REST_REQUEST_BODY_PARAMETER_REQUIRED = 'required';
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return bool
-     */
     public function isTransferValid(string $transferClassName): bool
     {
         return class_exists($transferClassName)
@@ -94,11 +89,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         return $transferMetadata->getValue($transfer);
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createRequestSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -108,11 +98,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createRequestDataSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -122,11 +107,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createRequestAttributesSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -136,11 +116,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResponseResourceSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -150,11 +125,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResponseResourceDataSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -164,11 +134,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResponseCollectionSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -178,11 +143,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResponseCollectionDataSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -192,11 +152,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResponseAttributesSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -206,11 +161,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createResourceRelationshipSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -220,11 +170,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     public function createIncludedSchemaNameFromTransferClassName(string $transferClassName): string
     {
         return str_replace(
@@ -234,11 +179,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
         );
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return bool
-     */
     public function isRequestSchemaRequired(string $transferClassName): bool
     {
         /** @var \Spryker\Shared\Kernel\Transfer\AbstractTransfer $transfer */
@@ -265,11 +205,6 @@ class ResourceTransferAnalyzer implements ResourceTransferAnalyzerInterface
             && $propertyMetaData[static::KEY_REST_REQUEST_PARAMETER] === static::REST_REQUEST_BODY_PARAMETER_REQUIRED;
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     protected function getTransferClassNamePartial(string $transferClassName): string
     {
         $transferClassNameExploded = $this->getTransferClassNameExploded($transferClassName);

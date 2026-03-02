@@ -54,10 +54,6 @@ class AnnotationAnalyzer implements AnnotationAnalyzerInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Finder\FinderInterface $glueFileFinder
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Dependency\Service\DocumentationGeneratorOpenApiToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         FinderInterface $glueFileFinder,
         DocumentationGeneratorOpenApiToUtilEncodingServiceInterface $utilEncodingService
@@ -66,13 +62,6 @@ class AnnotationAnalyzer implements AnnotationAnalyzerInterface
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param string $classPath
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $annotationsTransfer
-     * @param string|null $actionName
-     *
-     * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null
-     */
     public function getResourceParametersFromResource(
         string $classPath,
         AbstractTransfer $annotationsTransfer,

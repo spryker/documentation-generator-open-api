@@ -11,13 +11,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 interface AnnotationAnalyzerInterface
 {
-    /**
-     * @param string $classPath
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $annotationsTransfer
-     * @param string|null $actionName
-     *
-     * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null
-     */
     public function getResourceParametersFromResource(
         string $classPath,
         AbstractTransfer $annotationsTransfer,

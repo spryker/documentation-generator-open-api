@@ -20,19 +20,11 @@ class ControllerAnnotationsContextExpander implements ContextExpanderInterface
      */
     protected $annotationAnalyzer;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\AnnotationAnalyzerInterface $annotationAnalyzer
-     */
     public function __construct(AnnotationAnalyzerInterface $annotationAnalyzer)
     {
         $this->annotationAnalyzer = $annotationAnalyzer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer
-     */
     public function expand(ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer): ApiApplicationSchemaContextTransfer
     {
         foreach ($apiApplicationSchemaContextTransfer->getResourceContexts()->getArrayCopy() as $resourceContextTransfer) {
@@ -52,11 +44,6 @@ class ControllerAnnotationsContextExpander implements ContextExpanderInterface
         return $this->filterByPathAnnotation($apiApplicationSchemaContextTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer
-     */
     protected function filterByPathAnnotation(ApiApplicationSchemaContextTransfer $apiApplicationSchemaContextTransfer): ApiApplicationSchemaContextTransfer
     {
         $filteredResourceContextsData = array_filter(

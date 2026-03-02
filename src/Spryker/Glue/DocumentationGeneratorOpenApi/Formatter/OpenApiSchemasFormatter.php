@@ -100,12 +100,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
      */
     protected $resourceResponsesMap;
 
-    /**
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Analyzer\ResourceTransferAnalyzerInterface $resourceTransferAnalyzer
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Builder\SchemaBuilderInterface $schemaBuilder
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Renderer\SchemaRendererInterface $schemaRenderer
-     * @param \Spryker\Glue\DocumentationGeneratorOpenApi\Formatter\Schema\Processor\ResourceRelationshipProcessorInterface $resourceRelationshipProcessor
-     */
     public function __construct(
         ResourceTransferAnalyzerInterface $resourceTransferAnalyzer,
         SchemaBuilderInterface $schemaBuilder,
@@ -141,12 +135,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         return $formattedData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     * @param bool $isSnakeCased
-     *
-     * @return string
-     */
     protected function addRequestSchema(
         AnnotationTransfer $annotationTransfer,
         bool $isSnakeCased
@@ -171,13 +159,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         return sprintf(static::PATTERN_SCHEMA_REFERENCE, $requestSchemaName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     * @param bool $isSnakeCased
-     * @param \Generated\Shared\Transfer\ResourceContextTransfer|null $resourceContextTransfer
-     *
-     * @return string
-     */
     protected function addResponseResourceSchema(
         AnnotationTransfer $annotationTransfer,
         bool $isSnakeCased,
@@ -206,13 +187,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         return sprintf(static::PATTERN_SCHEMA_REFERENCE, $responseSchemaName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AnnotationTransfer $annotationTransfer
-     * @param bool $isSnakeCased
-     * @param \Generated\Shared\Transfer\ResourceContextTransfer|null $resourceContextTransfer
-     *
-     * @return string
-     */
     protected function addResponseCollectionSchema(
         AnnotationTransfer $annotationTransfer,
         bool $isSnakeCased,
@@ -263,13 +237,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         }
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $transfer
-     * @param string $attributesSchemaName
-     * @param bool $isSnakeCased
-     *
-     * @return void
-     */
     protected function addResponseDataAttributesSchemaFromTransfer(
         AbstractTransfer $transfer,
         string $attributesSchemaName,
@@ -294,13 +261,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         $this->addSchemaData($this->schemaBuilder->createResponseDataAttributesSchema($attributesSchemaName, $transferMetadata, $isSnakeCased));
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $transfer
-     * @param string $attributesSchemaName
-     * @param bool $isSnakeCased
-     *
-     * @return void
-     */
     protected function addRequestDataAttributesSchemaFromTransfer(
         AbstractTransfer $transfer,
         string $attributesSchemaName,
@@ -346,9 +306,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         }
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultSchemas(): void
     {
         $this->addDefaultErrorMessageSchema();
@@ -356,9 +313,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         $this->addDefaultRelationshipsSchema();
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultErrorMessageSchema(): void
     {
         $this->addResponseDataAttributesSchemaFromTransfer(
@@ -368,38 +322,22 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         );
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultLinksSchema(): void
     {
         $this->addSchemaData($this->schemaBuilder->createDefaultLinksSchema());
     }
 
-    /**
-     * @return void
-     */
     protected function addDefaultRelationshipsSchema(): void
     {
         $this->addSchemaData($this->schemaBuilder->createDefaultRelationshipDataAttributesSchema());
         $this->addSchemaData($this->schemaBuilder->createDefaultRelationshipDataCollectionAttributesSchema());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaDataTransfer $schemaData
-     *
-     * @return void
-     */
     protected function addSchemaData(SchemaDataTransfer $schemaData): void
     {
         $this->schemas = array_replace_recursive($this->schemas, $this->schemaRenderer->render($schemaData));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SchemaDataTransfer $schemaData
-     *
-     * @return void
-     */
     protected function addIncludeSchemaData(SchemaDataTransfer $schemaData): void
     {
         $renderData = $this->schemaRenderer->render($schemaData);
@@ -417,11 +355,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         }
     }
 
-    /**
-     * @param string $transferClassName
-     *
-     * @return string
-     */
     protected function resolveTransferClassName(string $transferClassName): string
     {
         $this->validateTransfer($transferClassName);
@@ -600,12 +533,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         }
     }
 
-    /**
-     * @param string $method
-     * @param \Generated\Shared\Transfer\GlueResourceMethodCollectionTransfer|null $declaredMethods
-     *
-     * @return bool
-     */
     protected function getIsSnakeCased(
         string $method,
         ?GlueResourceMethodCollectionTransfer $declaredMethods
