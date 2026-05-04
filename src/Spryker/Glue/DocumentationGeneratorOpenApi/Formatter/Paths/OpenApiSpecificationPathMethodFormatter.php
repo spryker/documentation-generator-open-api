@@ -178,8 +178,7 @@ class OpenApiSpecificationPathMethodFormatter implements OpenApiSpecificationPat
         if (
             !$this->isGetMethod($operationId) &&
             !$this->isDeleteMethod($operationId) &&
-            $annotationTransfer->getRequestAttributesClassName() !== null &&
-            $this->resourceTransferAnalyzer->isRequestSchemaRequired($annotationTransfer->getRequestAttributesClassName())
+            $annotationTransfer->getRequestAttributesClassName() !== null
         ) {
             $requestReference = $this->getRequestName($annotationTransfer->getRequestAttributesClassName());
             $pathMethodData[static::KEY_REQUEST_BODY] = $this->pathRequestSpecificationComponent->getSpecificationComponentData($pathMethodData, $requestReference);

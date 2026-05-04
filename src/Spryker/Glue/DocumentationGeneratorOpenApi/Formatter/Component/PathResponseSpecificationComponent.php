@@ -101,7 +101,7 @@ class PathResponseSpecificationComponent implements PathResponseSpecificationCom
                 $responseReference = sprintf(static::PATTERN_SCHEMA_REFERENCE, static::ERROR_MESSAGE);
             }
 
-            if ($responseReference) {
+            if ($responseReference && (int)$code !== Response::HTTP_NO_CONTENT) {
                 $responseData[static::KEY_CONTENT][static::KEY_APPLICATION_JSON][static::KEY_SCHEMA][static::KEY_REF] = $responseReference;
             }
 
@@ -120,13 +120,21 @@ class PathResponseSpecificationComponent implements PathResponseSpecificationCom
      */
     protected function addDefaultSuccessResponseToResponseData(array $pathMethodData): array
     {
-        if (!isset($pathMethodData[static::KEY_RESPONSES][(string)$pathMethodData[static::KEY_DEFAULT_RESPONSE_CODE]])) {
-            if (isset($pathMethodData[static::KEY_RESPONSES])) {
-                $pathMethodData[static::KEY_RESPONSES] = array_reverse($pathMethodData[static::KEY_RESPONSES], true);
+        if (isset($pathMethodData[static::KEY_RESPONSES][(string)$pathMethodData[static::KEY_DEFAULT_RESPONSE_CODE]])) {
+            return $pathMethodData;
+        }
+
+        foreach (array_keys($pathMethodData[static::KEY_RESPONSES] ?? []) as $code) {
+            if ((int)$code >= Response::HTTP_OK && (int)$code < Response::HTTP_BAD_REQUEST) {
+                return $pathMethodData;
             }
-            $pathMethodData[static::KEY_RESPONSES][(string)$pathMethodData[static::KEY_DEFAULT_RESPONSE_CODE]] = static::DESCRIPTION_SUCCESSFUL_RESPONSE;
+        }
+
+        if (isset($pathMethodData[static::KEY_RESPONSES])) {
             $pathMethodData[static::KEY_RESPONSES] = array_reverse($pathMethodData[static::KEY_RESPONSES], true);
         }
+        $pathMethodData[static::KEY_RESPONSES][(string)$pathMethodData[static::KEY_DEFAULT_RESPONSE_CODE]] = static::DESCRIPTION_SUCCESSFUL_RESPONSE;
+        $pathMethodData[static::KEY_RESPONSES] = array_reverse($pathMethodData[static::KEY_RESPONSES], true);
 
         return $pathMethodData;
     }

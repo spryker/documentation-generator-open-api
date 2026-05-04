@@ -144,9 +144,6 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
         }
         /** @phpstan-var class-string<\Spryker\Shared\Kernel\Transfer\AbstractTransfer> $transferClassName */
         $transferClassName = $this->resolveTransferClassName($annotationTransfer->getRequestAttributesClassName());
-        if (!$this->resourceTransferAnalyzer->isRequestSchemaRequired($transferClassName)) {
-            return '';
-        }
 
         $requestSchemaName = $this->resourceTransferAnalyzer->createRequestSchemaNameFromTransferClassName($transferClassName);
         $requestDataSchemaName = $this->resourceTransferAnalyzer->createRequestDataSchemaNameFromTransferClassName($transferClassName);
@@ -273,7 +270,7 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
 
         $transferMetadata = $this->resourceTransferAnalyzer->getTransferMetadata($transfer);
         foreach ($transferMetadata as $property) {
-            if ($property[static::KEY_IS_TRANSFER] && $this->resourceTransferAnalyzer->isRequestParameterRequired($property)) {
+            if ($property[static::KEY_IS_TRANSFER]) {
                 $this->validateTransfer($property[static::KEY_TYPE]);
                 $schemaName = $this->resourceTransferAnalyzer->createRequestAttributesSchemaNameFromTransferClassName($property[static::KEY_TYPE]);
                 /** @var \Spryker\Shared\Kernel\Transfer\AbstractTransfer $transfer */
