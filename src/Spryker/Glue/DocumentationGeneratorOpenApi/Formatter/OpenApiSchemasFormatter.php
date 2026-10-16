@@ -562,10 +562,14 @@ class OpenApiSchemasFormatter implements OpenApiSchemaFormatterInterface
                 $this->addRequestSchema($annotationTransfer, false);
             }
             foreach ($this->getNotCollectionPathAnnotations($pathAnnotationTransfer) as $annotationTransfer) {
+                if ($annotationTransfer->getResponseAttributesClassName() === null) {
+                    continue;
+                }
+
                 $this->addResponseResourceSchema($annotationTransfer, false, null);
             }
 
-            if ($pathAnnotationTransfer->getGetCollection()) {
+            if ($pathAnnotationTransfer->getGetCollection()?->getResponseAttributesClassName() !== null) {
                 $this->addResponseCollectionSchema(
                     $customRoutesContextTransfer->getPathAnnotationOrFail()->getGetCollectionOrFail(),
                     false,

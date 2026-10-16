@@ -79,13 +79,20 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
      */
     public function format(CustomRoutesContextTransfer $customRouteTransfer, array $formattedData): array
     {
+        $annotationTransfer = $this->getAnnotationTransfer($customRouteTransfer);
+
+        // Routes without a response model cannot be documented here, e.g. Dynamic Entity routes, which are documented by an OpenAPI schema formatter plugin.
+        if ($annotationTransfer === null || $annotationTransfer->getResponseAttributesClassName() === null) {
+            return $formattedData;
+        }
+
         $resourceType = $this->getResourceType($customRouteTransfer);
         $requestMethodName = $this->getRequestMethodFromAnnotation($customRouteTransfer);
         $operationIdPattern = $requestMethodName . static::PATTERN_OPERATION_ID_GET_RESOURCE;
 
         $pathMethodComponentDataTransfer = (new PathMethodComponentDataTransfer())
             ->setResourceType($resourceType)
-            ->setAnnotation($this->getAnnotationTransfer($customRouteTransfer))
+            ->setAnnotation($annotationTransfer)
             ->setPatternOperationIdResource($operationIdPattern)
             ->setDefaultResponseCode(Response::HTTP_OK)
             ->setPathName($customRouteTransfer->getPathOrFail())
@@ -142,7 +149,7 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
         return ($method === static::METHOD_GET_COLLECTION) ? static::REQUEST_METHOD_GET_COLLECTION : strtolower($method);
     }
 
-    protected function getAnnotationTransfer(CustomRoutesContextTransfer $customRouteTransfer): AnnotationTransfer
+    protected function getAnnotationTransfer(CustomRoutesContextTransfer $customRouteTransfer): ?AnnotationTransfer
     {
         $defaultsData = $customRouteTransfer->getDefaults();
 
@@ -162,6 +169,19 @@ class CustomRoutePathMethodFormatter implements CustomPathMethodFormatterInterfa
             }
         }
 
-        return $customRouteTransfer->getPathAnnotationOrFail()->offsetGet($defaultsData[static::DEFAULT_METHOD_FIELD]);
+        $pathAnnotationTransfer = $customRouteTransfer->getPathAnnotationOrFail();
+        $method = $defaultsData[static::DEFAULT_METHOD_FIELD];
+
+        if ($pathAnnotationTransfer->offsetExists($method)) {
+            return $pathAnnotationTransfer->offsetGet($method);
+        }
+
+        $lowerCasedMethod = strtolower($method);
+
+        if (!$pathAnnotationTransfer->offsetExists($lowerCasedMethod)) {
+            return null;
+        }
+
+        return $pathAnnotationTransfer->offsetGet($lowerCasedMethod);
     }
 }
